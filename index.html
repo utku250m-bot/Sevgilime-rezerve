@@ -3,52 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seni Seviyorum ❤️</title>
+    <title>Esila ♡ Yusuf</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #fff5f5; font-family: 'Montserrat', sans-serif; color: #4a4a4a; overflow-x: hidden; }
-        .section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #e63946; margin-bottom: 10px; }
-        p { font-size: 1.2rem; max-width: 600px; line-height: 1.6; }
-        .photo-frame { width: 280px; height: 350px; background: white; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: rotate(-3deg); margin: 20px; border-radius: 5px; }
-        .photo-frame img { width: 100%; height: 85%; object-fit: cover; }
-        .heart { color: #e63946; font-size: 50px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
-        .scroll-down { position: absolute; bottom: 20px; font-size: 0.9rem; opacity: 0.6; }
+        /* Genel Tasarım */
+        body { margin: 0; background: #fff0f3; font-family: 'Montserrat', sans-serif; color: #4a4a4a; overflow-x: hidden; }
+        
+        /* Şifre Ekranı Stili */
+        .login-screen { 
+            height: 100vh; 
+            background: linear-gradient(135deg, #a71d31 0%, #3f0d12 100%); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            position: fixed; 
+            width: 100%; 
+            z-index: 1000; 
+        }
+        .login-card { width: 90%; max-width: 400px; padding: 20px; }
+        .login-card h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin-bottom: 10px; }
+        .input-group { 
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 50px; 
+            padding: 5px; 
+            display: flex; 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            margin-top: 20px; 
+        }
+        input { background: transparent; border: none; color: white; padding: 12px; width: 100%; text-align: center; outline: none; font-size: 1rem; }
+        .btn-open { background: white; color: #a71d31; border: none; padding: 10px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        
+        /* Ana İçerik Stili (Başlangıçta Gizli) */
+        .main-content { display: none; padding-bottom: 50px; }
+        .top-nav { 
+            display: flex; 
+            justify-content: center; 
+            padding: 20px; 
+            background: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .tab { background: #ff4d6d; color: white; padding: 10px 30px; border-radius: 25px; font-weight: bold; }
+
+        .container { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
+        
+        /* Kart Yapıları */
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid #ff4d6d; }
+        .days-count { font-size: 3.5rem; font-weight: bold; color: #ff4d6d; display: block; margin: 10px 0; }
+        
+        /* Müzik ve Galeri */
+        .music-title, .gallery-title { font-family: 'Dancing Script', cursive; font-size: 2rem; color: #ff4d6d; margin-bottom: 15px; }
+        .photo-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        .photo-card img { width: 100%; display: block; height: auto; }
     </style>
 </head>
 <body>
 
-    <div class="section">
-        <div class="heart">❤️</div>
-        <h1>Hoş Geldin Sevgilim</h1>
-        <p>Senin için küçük bir sürpriz hazırladım... Aşağı kaydırır mısın?</p>
-        <div class="scroll-down">Aşağı kaydır ↓</div>
-    </div>
-
-    <div class="section" style="background: #ffe3e3;">
-        <h1>Her Şey Burada Başladı</h1>
-        <div class="photo-frame">
-            <img src="https://via.placeholder.com/300x400" alt="İlk Günümüz">
-            <p style="font-size: 0.8rem; margin-top: 5px;">[Buraya İlk Fotoğrafın Tarihi]</p>
+    <div class="login-screen" id="login-screen">
+        <div class="login-card">
+            <h1>Esila ♡ Yusuf</h1>
+            <p>Bu özel dünyaya girmek için tarihimizi gir sevgilim...</p>
+            <div class="input-group">
+                <input type="text" id="passwordInput" placeholder="GG.AA.YYYY">
+                <button class="btn-open" onclick="checkPassword()">Aç 💌</button>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;">İpucu: Aşka adım attığımız tarih</p>
         </div>
-        <p>Gözlerine ilk baktığım o an, hayatımın değişeceğini biliyordum.</p>
     </div>
 
-    <div class="section">
-        <h1>En Sevdiğim Anımız</h1>
-        <div class="photo-frame" style="transform: rotate(3deg);">
-            <img src="https://via.placeholder.com/300x400" alt="Güzel Bir An">
-            <p style="font-size: 0.8rem; margin-top: 5px;">[Buraya Yer Bilgisi]</p>
+    <div class="main-content" id="main-content">
+        <div class="top-nav">
+            <div class="tab">Kalbimdeki Köşe</div>
         </div>
-        <p>Seninle gülmek, dünyadaki en güzel melodi gibi...</p>
+
+        <div class="container">
+            <div class="card">
+                <div class="music-title">Bizim Şarkımız 🎵</div>
+                <p style="font-weight: 500;">Fikrimin İnce Gülü</p>
+                <p style="font-size: 0.9rem; font-style: italic; color: #666;">
+                    "Bu şarkı hayatımızın dönüm noktası olmakla beraber, en son zamanlarda bile bize birbirimizi hatırlatsın."
+                </p>
+                <iframe width="100%" height="180" src="https://www.youtube.com/embed/I0Y2HAsXv_0" frameborder="0" allow="picture-in-picture" style="border-radius:15px; margin-top:10px;"></iframe>
+            </div>
+
+            <div class="card">
+                <span style="font-size: 0.9rem; text-transform: uppercase;">Birlikte Olduğumuz</span>
+                <span class="days-count">365 gün</span>
+                <p>Her saniyesi "iyi ki" olan bir yıl... ❤️</p>
+            </div>
+
+            <div class="card" style="text-align: left;">
+                <h3 style="font-family: 'Dancing Script'; font-size: 1.8rem; color: #ff4d6d; margin-top: 0;">O İlk Bakış...</h3>
+                <p style="line-height: 1.7;">
+                    "Bazen durup o ilk günü, seninle ilk göz göze geldiğimiz o saniyeyi düşünüyorum. Hayatın bana hazırladığı en güzel sürpriz olduğunu o an anlamalıydım. Bakışlarındaki o ilk pırıltı, sanki dünyadaki tüm renkleri bir anda değiştirmeye yetmişti. Yüzündeki o sıcaklık... Hepsi dün gibi aklımda. O gün başlayan bu hikayenin her satırını seninle yazmak, tanıdığım en güzel duygu. Hayatımın en 'iyi ki' dediğim anı, seninle tanıştığım o andır."
+                </p>
+            </div>
+
+            <div class="gallery-title">Gözlerimdeki İzlerin</div>
+            
+            <div class="photo-card">
+                <img src="foto1.jpg" alt="Sevgilimle 1">
+            </div>
+
+            <div class="photo-card">
+                <img src="foto2.jpg" alt="Sevgilimle 2">
+            </div>
+
+            <p style="font-style: italic; color: #ff4d6d; font-weight: 500; margin-top: 40px;">
+                "Öyle uzaktan seviyorum seni; kokunu alamadan, boynuna sarılamadan, yüzüne dokunamadan... Sadece seviyorum."
+            </p>
+        </div>
     </div>
 
-    <div class="section" style="background: #e63946; color: white;">
-        <h1 style="color: white;">Seni Çok Seviyorum</h1>
-        <p>İyi ki varsın, iyi ki benimlesin. Nice güzel yıllarımıza!</p>
-        <div class="heart" style="color: white;">❤️❤️❤️</div>
-    </div>
-
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            // Şifreniz: 13.03.2025
+            if(pass === "13.03.2025") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                alert("Yanlış şifre sevgilim! Kalbinin sesini dinle... ❤️");
+            }
+        }
+    </script>
 </body>
 </html>
