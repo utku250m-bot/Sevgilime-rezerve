@@ -7,28 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; background: #fff0f3; font-family: 'Montserrat', sans-serif; color: #4a4a4a; overflow-x: hidden; }
+        .screen { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box; }
         
-        /* 1. EKRAN: ŞİİR (AÇILIŞ) */
-        .intro-screen { 
-            height: 100vh; background: #fff; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; text-align: center; padding: 20px;
-        }
-        .intro-card { background: #ffeef2; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 400px; position: relative; }
-        .intro-card h2 { font-family: 'Dancing Script'; color: #ff4d6d; font-size: 2rem; margin-bottom: 20px; }
-        .intro-card p { line-height: 1.8; font-size: 0.95rem; margin-bottom: 20px; }
-        .btn-next { background: #ff4d6d; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; }
+        /* 1. EKRAN: CEMAL SÜREYA ŞİİRİ */
+        #intro-screen { background: white; }
+        .intro-card { background: #ffeef2; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 450px; }
+        .intro-card h2 { font-family: 'Dancing Script'; color: #ff4d6d; font-size: 2.2rem; margin-bottom: 20px; }
+        .intro-card p { line-height: 1.8; font-size: 1rem; margin-bottom: 25px; }
+        .btn-next { background: #ff4d6d; color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1rem; }
 
-        /* 2. EKRAN: ŞİFRE (BAŞLANGIÇTA GİZLİ) */
-        .login-screen { 
-            height: 100vh; background: linear-gradient(135deg, #a71d31 0%, #3f0d12 100%); 
-            display: none; align-items: center; justify-content: center; text-align: center; color: white;
+        /* 2. EKRAN: ŞİFRE EKRANI */
+        #login-screen { 
+            background: linear-gradient(135deg, #a71d31 0%, #3f0d12 100%); 
+            display: none; color: white;
         }
-        .input-group { background: rgba(255, 255, 255, 0.2); border-radius: 50px; padding: 5px; display: flex; border: 1px solid rgba(255, 255, 255, 0.3); margin-top: 20px; }
-        input { background: transparent; border: none; color: white; padding: 12px; width: 100%; text-align: center; outline: none; }
+        .input-group { background: rgba(255, 255, 255, 0.2); border-radius: 50px; padding: 5px; display: flex; border: 1px solid rgba(255, 255, 255, 0.3); margin-top: 20px; width: 100%; max-width: 350px; }
+        input { background: transparent; border: none; color: white; padding: 12px; width: 100%; text-align: center; outline: none; font-size: 1.1rem; }
         .btn-open { background: white; color: #a71d31; border: none; padding: 10px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; }
 
-        /* ANA İÇERİK */
-        .main-content { display: none; padding-bottom: 50px; }
+        /* 3. EKRAN: ANA İÇERİK */
+        #main-content { display: none; padding: 20px 0; background: #fff0f3; height: auto; min-height: 100vh; }
         .container { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
         .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 5px solid #ff4d6d; }
         .music-title { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #ff4d6d; margin-bottom: 15px; }
@@ -38,7 +36,7 @@
 </head>
 <body>
 
-    <div class="intro-screen" id="intro-screen">
+    <div class="screen" id="intro-screen">
         <div class="intro-card">
             <h2>Cemal Süreya der ki;</h2>
             <p>
@@ -46,19 +44,19 @@
                 <br><br>
                 <b>"Kalbimin Yamacında Gül Gölgesisin. Bir Şiirlik Hakkım Olsa, Yine Seni Severdim. 🤍"</b>
             </p>
-            <button class="btn-next" onclick="goToLogin()">Aşka Açıl 💌</button>
+            <button class="btn-next" onclick="showLogin()">Aşka Açıl 💌</button>
         </div>
     </div>
 
-    <div class="login-screen" id="login-screen">
-        <div style="width: 90%; max-width: 400px;">
-            <h1 style="font-family: 'Dancing Script'; font-size: 3rem;">Esila ♡ Yusuf</h1>
-            <p>Sizin için hazırlanan bu özel sayfaya erişmek için şifrenizi girin</p>
+    <div class="screen" id="login-screen">
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <h1 style="font-family: 'Dancing Script'; font-size: 3.5rem; margin-bottom: 10px;">Esila ♡ Yusuf</h1>
+            <p>Bu özel dünyaya girmek için tarihimizi gir sevgilim...</p>
             <div class="input-group">
-                <input type="text" id="passwordInput" placeholder="GG.AA.YYYY">
+                <input type="text" id="passwordInput" placeholder="13.03.2025">
                 <button class="btn-open" onclick="checkPassword()">Aç 🚀</button>
             </div>
-            <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.8;">İPUCU: Aşka Adım Attığımız Tarih</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">İPUCU: Aşka Adım Attığımız Tarih</p>
         </div>
     </div>
 
@@ -66,8 +64,44 @@
         <div class="container">
             <div class="card">
                 <div class="music-title">Bizim Şarkımız 🎵</div>
-                <p style="font-weight: 500;">Fikrimin İnce Gülü</p>
-                <p style="font-size: 0.85rem; font-style: italic; color: #666;">
+                <p style="font-weight: bold; color: #ff4d6d; margin-bottom: 5px;">Fikrimin İnce Gülü</p>
+                <p style="font-size: 0.85rem; font-style: italic; color: #666; margin-bottom: 15px;">
                     "Bu şarkı hayatımızın dönüm noktası olmakla beraber, en son zamanlarda bile bize birbirimizi hatırlatsın."
                 </p>
-                <iframe width="100%" height="200" src="
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/S_8qK6Xq09E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="border-radius:15px;"></iframe>
+            </div>
+
+            <div class="card">
+                <p style="margin:0; font-size: 0.9rem; text-transform: uppercase;">Birlikte Olduğumuz Gün Sayımız</p>
+                <h2 style="color:#ff4d6d; font-size: 3.5rem; margin: 10px 0;">365 gün</h2>
+            </div>
+
+            <h2 style="font-family: 'Dancing Script'; color: #ff4d6d; font-size: 2rem; margin: 30px 0;">Gözlerimdeki İzlerin</h2>
+            <div class="photo-card"><img src="foto1.jpg" alt="Fotoğraf 1 Yüklenmedi"></div>
+            <div class="photo-card"><img src="foto2.jpg" alt="Fotoğraf 2 Yüklenmedi"></div>
+
+            <p style="font-style: italic; color: #ff4d6d; margin-top: 40px; padding: 0 20px;">
+                "Öyle uzaktan seviyorum seni; kokunu alamadan, sarılamadan... Sadece seviyorum."
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('intro-screen').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'flex';
+        }
+
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            if(pass === "13.03.2025") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                alert("Yanlış şifre sevgilim! ❤️");
+            }
+        }
+    </script>
+</body>
+</html>
