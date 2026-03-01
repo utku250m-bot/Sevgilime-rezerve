@@ -1,35 +1,221 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esila ♡ Yusuf</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-    <style>
-        :root { --soft-pink: #fff0f3; --deep-red: #ff4d6d; --dark-cherry: #a71d31; }
-        body { margin: 0; background: var(--soft-pink); font-family: 'Montserrat', sans-serif; color: #4a4a4a; overflow-x: hidden; }
-        
-        .screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box; transition: 0.5s ease; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizim Hikayemiz 💗</title>
 
-        /* 1. EKRAN: CEMAL SÜREYA ŞİİRİ */
-        #intro-screen { background: white; flex-direction: column; z-index: 10; }
-        .intro-card { background: #ffeef2; padding: 40px 30px; border-radius: 35px; box-shadow: 0 15px 40px rgba(255, 77, 109, 0.1); max-width: 450px; border: 1px solid #ffcad4; }
-        .intro-card h2 { font-family: 'Dancing Script'; color: var(--deep-red); font-size: 2.6rem; margin-bottom: 20px; }
-        .intro-card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 30px; color: #555; }
+<style>
 
-        /* 2. EKRAN: ŞİFRE EKRANI */
-        #login-screen { 
-            background: linear-gradient(135deg, var(--dark-cherry) 0%, #3f0d12 100%); 
-            display: none; color: white; position: fixed; top: 0; left: 0; width: 100%; z-index: 20;
-        }
-        .login-box { width: 100%; max-width: 350px; }
-        .input-group { background: rgba(255, 255, 255, 0.15); border-radius: 50px; padding: 8px; display: flex; border: 1px solid rgba(255, 255, 255, 0.3); margin-top: 30px; }
-        input { background: transparent; border: none; color: white; padding: 12px; width: 100%; text-align: center; outline: none; font-size: 1.1rem; }
-        input::placeholder { color: rgba(255,255,255,0.6); }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        /* 3. EKRAN: ANA İÇERİK */
-        #main-content { display: none; padding: 50px 0; background: var(--soft-pink); width: 100%; }
-        .container { padding: 20px; max-width: 500px; margin: auto; text-align: center; }
-        .card { background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 30px; border-bottom: 5px solid var(--deep-red); }
-        
-        .photo-card { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 12px
+body{
+font-family: Arial;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:#444;
+}
+
+.page{
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+h1{
+color:#ff4f8b;
+margin-bottom:20px;
+}
+
+button{
+background:#ff4f8b;
+border:none;
+padding:15px 30px;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+margin-top:20px;
+}
+
+input{
+padding:12px;
+font-size:18px;
+border-radius:20px;
+border:1px solid #ccc;
+text-align:center;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+max-width:500px;
+width:90%;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+}
+
+.heart{
+font-size:40px;
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page active" id="page1">
+
+<div class="card">
+
+<h1>💗 Hoş Geldin</h1>
+
+<p style="font-size:22px">
+"Sen benim en güzel tesadüfümsün."
+</p>
+
+<p>— Cemal Süreya</p>
+
+<div class="heart">💞</div>
+
+<button onclick="nextPage(2)">
+Aşka Açıl 💌
+</button>
+
+</div>
+</div>
+
+
+<div class="page" id="page2">
+
+<div class="card">
+
+<h1>🔐 Küçük Bir Şifre</h1>
+
+<p>Bizim sevgili olduğumuz tarihi yaz 💗</p>
+
+<br>
+
+<input id="password" placeholder="tarih">
+
+<br>
+
+<button onclick="checkPassword()">Aç 💖</button>
+
+<p id="error" style="color:red"></p>
+
+</div>
+</div>
+
+
+<div class="page" id="page3">
+
+<div class="card">
+
+<h1>Bizim Şarkımız 🎶</h1>
+
+<p>Bu şarkıyı ilk duyduğumda aklıma sen geldin 💗</p>
+
+<br>
+
+<iframe width="100%" height="200"
+src="https://www.youtube.com/embed/6e7Z2bH1E8M"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+<p style="margin-top:15px">
+İyi ki varsın ❤️
+</p>
+
+<button onclick="nextPage(4)">
+Bir sürpriz daha 🎁
+</button>
+
+</div>
+</div>
+
+
+<div class="page" id="page4">
+
+<div class="card">
+
+<h1>Kalbimin Köşesi 💗</h1>
+
+<p>Bizim en güzel anlarımız 📸</p>
+
+<div class="gallery">
+
+<img src="https://picsum.photos/300/300?1">
+<img src="https://picsum.photos/300/300?2">
+<img src="https://picsum.photos/300/300?3">
+<img src="https://picsum.photos/300/300?4">
+
+</div>
+
+<p style="margin-top:15px">
+Her fotoğrafımız ayrı bir anı 💞
+</p>
+
+</div>
+</div>
+
+
+<script>
+
+function nextPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById("page"+page).classList.add("active")
+}
+
+function checkPassword(){
+
+let pass=document.getElementById("password").value
+
+if(pass=="13.03.2025"){
+nextPage(3)
+}else{
+document.getElementById("error").innerText="Yanlış tarih 😢"
+}
+
+}
+
+</script>
+
+</body>
+</html>
